@@ -25,6 +25,7 @@
   const media = new Audio();
   media.preload = "metadata";
   media.volume = 0.7;
+  let repeat = false;
   let playerWindow = null,
     queue = [],
     queueIndex = 0,
@@ -262,10 +263,10 @@
     }
     const w = create({
       id: "media-player",
-      title: "Media Player",
+      title: "WINAMP",
       icon: "player",
       width: 420,
-      height: 270,
+      height: 360,
       x: Math.max(290, innerWidth - 450),
       y: Math.max(120, innerHeight - 330),
       menus: [
@@ -290,12 +291,13 @@
     });
     if (!w) return;
     playerWindow = w;
+    w.node.classList.add("winamp-window");
     w.body.classList.add("player");
     const display = el("div", "player-display"),
       digits = el("div", "player-digits", "00:00"),
       readout = el("div", "player-readout"),
       track = el("div", "player-track", "No sample selected"),
-      meta = el("div", "player-meta", "44 kHz  •  Stereo");
+      meta = el("div", "player-meta", "ORIGINAL SAMPLE  •  STEREO");
     readout.append(track, meta);
     display.append(digits, readout);
     const seek = el("input", "seek");
@@ -350,7 +352,18 @@
         "Original site audio samples; these may not match the track titles.",
       ),
     );
-    playerUI = { digits, track, seek, playButton, volume };
+    const playlist = el("div", "winamp-playlist");
+    const head = el("div", "winamp-playlist-head", "PLAYLIST EDITOR");
+    const repeatButton = button("REPEAT", () => {
+      repeat = !repeat;
+      repeatButton.classList.toggle("pressed", repeat);
+      repeatButton.setAttribute("aria-pressed", String(repeat));
+    });
+    repeatButton.classList.toggle("pressed", repeat);
+    repeatButton.setAttribute("aria-pressed", String(repeat));
+    head.append(repeatButton);
+    w.body.append(head, playlist);
+    playerUI = { digits, track, seek, playButton, volume, playlist };
     w.dispose = () => {
       media.pause();
       playerWindow = null;
@@ -370,6 +383,21 @@
       : 0;
     playerUI.playButton.textContent = media.paused ? "▶" : "Ⅱ";
     playerUI.volume.value = media.volume;
+    const queueKey = queue.map((t) => t.title).join("|");
+    if (playerUI.playlist.dataset.queue !== queueKey) {
+      playerUI.playlist.dataset.queue = queueKey;
+      playerUI.playlist.replaceChildren();
+      queue.forEach((t, i) => {
+        const b = button(String(i + 1).padStart(2, "0") + ". " + t.title, () =>
+          play(queue, i),
+        );
+        b.title = t.title;
+        playerUI.playlist.append(b);
+      });
+    }
+    [...playerUI.playlist.children].forEach((b, i) =>
+      b.classList.toggle("selected", i === queueIndex),
+    );
   }
   function tryPlay() {
     media
@@ -408,7 +436,13 @@
     "volumechange",
   ])
     media.addEventListener(event, updatePlayer);
-  media.addEventListener("ended", () => advance(1));
+  media.addEventListener("ended", () => {
+    if (repeat) {
+      media.currentTime = 0;
+      tryPlay();
+    } else if (queueIndex < queue.length - 1) advance(1);
+    else playerWindow?.setStatus("Playlist finished");
+  });
   media.addEventListener("error", () =>
     playerWindow?.setStatus("Sample unavailable. Try the next track."),
   );
@@ -559,7 +593,7 @@
         },
         menuHelp,
       ],
-      status: heart ? "Read-only" : "Saved on this device",
+      status: heart ? "Read-only" : "All changes saved",
     });
     if (!w) return;
     const area = el("textarea", "notepad-textarea");
@@ -574,7 +608,7 @@
     area.oninput = () =>
       w.setStatus(
         save("notepadContent", area.value)
-          ? "Saved on this device"
+          ? "All changes saved"
           : "Could not save locally. Use File → Save As.",
       );
     w.body.append(area);
@@ -705,158 +739,13 @@
     read("say.fit", "cover"),
   );
   function myspace() {
-    const w = create({
-      id: "internet-explorer",
-      title: "Carmen’s MySpace — Microsoft Internet Explorer",
-      icon: "browser",
-      width: 740,
-      height: 560,
-      menus: [
-        menuFile(),
-        {
-          label: "View",
-          items: () => [
-            {
-              label: "Refresh",
-              action: () => {
-                w.close();
-                myspace();
-              },
-            },
-          ],
-        },
-        menuHelp,
-      ],
-      status: "Done",
-      secondary: "Internet",
-    });
-    if (!w) return;
-    const bar = address("http://www.myspace.com/CarmenXCannibal");
-    w.body.append(
-      toolbar([
-        {
-          label: "Home",
-          icon: "browser",
-          action: () => {
-            w.close();
-            myspace();
-          },
-        },
-        {
-          label: "Refresh",
-          action: () => {
-            w.close();
-            myspace();
-          },
-        },
-        {
-          label: "Play profile song",
-          icon: "player",
-          action: () =>
-            play(
-              [
-                {
-                  title:
-                    "The Artist In The Ambulance — Thrice (original profile audio)",
-                  previewUrl:
-                    "https://audio.jukehost.co.uk/DEGSOZnCvY7B9xOdJtOOJuHQUH6TavIA",
-                },
-              ],
-              0,
-            ),
-        },
-      ]),
-      bar,
-    );
-    const page = el("div", "browser-page"),
-      brand = el("div", "browser-brand", "myspace.com");
-    brand.append(el("small", "", "a place for friends"));
-    const content = document
-      .querySelector("#myspace-template")
-      .content.querySelector(".myspace-body")
-      .cloneNode(true);
-    page.append(brand, content);
-    w.body.append(page);
+    Immersion.browser();
   }
   function aim() {
-    const w = create({
-      id: "aim",
-      title: "Buddy List — AOL Instant Messenger",
-      icon: "aim",
-      width: 610,
-      height: 440,
-      menus: [menuFile(), menuHelp],
-      status: "Saved conversations",
-      secondary: "SAY_Host",
-    });
-    if (!w) return;
-    const layout = el("div", "buddy-layout"),
-      list = el("aside", "buddy-list sunken"),
-      pane = el("div", "conversation"),
-      log = el("div", "chat-log sunken");
-    list.append(
-      el("h3", "", "Buddies (" + Object.keys(aimConversations).length + ")"),
-    );
-    const note = el("div", "archive-label", "Conversation archive • read-only");
-    pane.append(log, note);
-    layout.append(list, pane);
-    w.body.append(layout);
-    function show(name) {
-      list
-        .querySelectorAll("button")
-        .forEach((b) =>
-          b.classList.toggle("selected", b.dataset.name === name),
-        );
-      const c = aimConversations[name];
-      log.replaceChildren();
-      c.log.forEach((m) => {
-        const p = el("p", m.sender);
-        p.append(
-          el("b", "", m.sender === "you" ? "SAY_Host: " : name + ": "),
-          document.createTextNode(m.message),
-        );
-        log.append(p);
-      });
-      w.setTitle(name + " — Instant Message");
-      w.setStatus(c.displayName + " • Saved conversation");
-    }
-    Object.keys(aimConversations).forEach((name) => {
-      const b = button(name, () => show(name));
-      b.dataset.name = name;
-      list.append(b);
-    });
-    show(Object.keys(aimConversations)[0]);
+    Immersion.aim();
   }
   function chat() {
-    const w = create({
-      id: "chat",
-      title: "MusicLovers28 — ICQ Chat",
-      icon: "chat",
-      width: 620,
-      height: 450,
-      menus: [menuFile(), menuHelp],
-      status: "Saved room transcript",
-    });
-    if (!w) return;
-    const layout = el("div", "chat-layout"),
-      log = el("div", "chat-log dark sunken"),
-      users = el("div", "chat-users sunken");
-    users.append(el("b", "", "Users Here"));
-    [
-      ...new Set(chatLog.filter((m) => m.user !== "System").map((m) => m.user)),
-    ].forEach((u) => users.append(el("div", "", u)));
-    chatLog.forEach((m) => {
-      const p = el("p");
-      const b = el("b", "", m.user === "System" ? "" : m.user + ": ");
-      b.style.color = m.color;
-      p.append(b, document.createTextNode(m.message));
-      log.append(p);
-    });
-    layout.append(log, users);
-    w.body.append(
-      layout,
-      el("div", "archive-label", "Conversation archive • read-only"),
-    );
+    Immersion.chat();
   }
   function mail() {
     const w = create({
@@ -1414,6 +1303,16 @@
         .querySelectorAll(".desktop-icon.selected")
         .forEach((n) => n.classList.remove("selected"));
   });
+  window.DesktopApps = {
+    library,
+    player,
+    play,
+    photosApp,
+    notepad,
+    display,
+    mail,
+    computer,
+  };
   Shell.arrange();
   library();
 })();

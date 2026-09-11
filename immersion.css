@@ -1,0 +1,980 @@
+/* Period application chrome and Carmen's personal web pages. */
+.window {
+  max-width: calc(100vw - 6px);
+  max-height: calc(100dvh - 40px);
+}
+.dialog-content p,
+.explorer-sidebar p {
+  white-space: pre-line;
+}
+.desktop-icon {
+  gap: 4px;
+}
+.network-tray {
+  padding: 0;
+  box-shadow: none;
+  background: transparent;
+  display: flex;
+  opacity: 0.55;
+}
+.network-tray img {
+  width: 16px;
+  height: 16px;
+}
+.network-tray.connected {
+  opacity: 1;
+}
+.dialup-content {
+  padding: 15px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+.dialup-heading {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 7px;
+}
+.dialup-heading img {
+  width: 32px;
+  height: 32px;
+  image-rendering: pixelated;
+}
+.dialup-field {
+  display: grid;
+  grid-template-columns: 95px 1fr;
+  align-items: center;
+  gap: 7px;
+}
+.dialup-field input {
+  min-width: 0;
+  width: 100%;
+  height: 25px;
+}
+.sound-option {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+}
+.dialup-message {
+  min-height: 38px;
+  padding: 9px !important;
+  background: #c0c0c0 !important;
+  line-height: 1.5;
+}
+.dialup-content progress {
+  width: 100%;
+  height: 15px;
+  accent-color: #000080;
+}
+.dialup-window .dialog-actions {
+  padding-top: 0;
+}
+.bin-note {
+  padding: 10px 12px;
+  margin: 0;
+  line-height: 1.5;
+}
+.bin-files {
+  flex: 1;
+  overflow: auto;
+}
+.bin-files td {
+  cursor: default;
+}
+.away-editor {
+  padding: 14px;
+  gap: 9px;
+}
+.away-editor textarea {
+  flex: 1;
+  min-height: 100px;
+  font:
+    13px/1.5 Arial,
+    sans-serif;
+}
+.away-editor .dialog-actions {
+  padding: 0;
+}
+.aim-classic .window-body {
+  padding: 6px;
+  gap: 5px;
+  background: #ece9d8;
+}
+.aim-brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 5px;
+  color: #003b86;
+}
+.aim-brand img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+.aim-brand b {
+  max-width: 140px;
+  font:
+    italic bold 18px/1.1 Arial,
+    sans-serif;
+}
+.aim-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid #808080;
+  padding-left: 3px;
+}
+.aim-tabs > * {
+  padding: 5px 16px;
+  background: #c0c0c0;
+  border: 1px solid #808080;
+  border-bottom: 0;
+}
+.aim-tabs b {
+  background: #fff;
+}
+.aim-tabs span {
+  color: #777;
+}
+.aim-tree {
+  flex: 1;
+  min-height: 120px;
+  overflow: auto;
+  background: #fff !important;
+  padding: 8px 5px !important;
+}
+.buddy-group-title {
+  display: block;
+  font-size: 12px;
+  padding: 5px 1px 9px;
+}
+.aim-buddy {
+  box-shadow: none;
+  background: transparent;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  padding: 6px 8px 6px 18px;
+}
+.aim-buddy:hover,
+.aim-buddy:focus-visible {
+  background: #000080;
+  color: white;
+}
+.buddy-state {
+  font: 14px Arial;
+  color: #888;
+}
+.buddy-state.online {
+  color: #947c00;
+}
+.buddy-state.away {
+  color: #555;
+}
+.buddy-state.offline {
+  color: #b0b0b0;
+}
+.aim-away {
+  font:
+    italic 12px/1.4 Arial,
+    sans-serif;
+  background: #ffffe1;
+  border: 1px solid #c9c4a1;
+  padding: 8px;
+  max-height: 90px;
+  overflow: auto;
+}
+.aim-actions {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+}
+.aim-actions button {
+  flex: 1;
+  font-size: 11px;
+  padding: 7px 4px;
+}
+.instant-message .window-body {
+  padding: 5px;
+  gap: 4px;
+  background: #ece9d8;
+}
+.im-banner {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: #003c87;
+  padding: 3px 5px;
+  font-size: 13px;
+}
+.im-banner img {
+  width: 22px;
+  height: 22px;
+}
+.instant-message .chat-log {
+  flex: 1;
+  min-height: 100px;
+  font:
+    13px/1.45 Arial,
+    sans-serif;
+  padding: 9px !important;
+}
+.message-time {
+  font-size: 11px;
+  color: #777;
+}
+.im-compose {
+  display: flex;
+  flex-direction: column;
+  min-height: 110px;
+}
+.im-format {
+  display: flex;
+  gap: 17px;
+  align-items: center;
+  padding: 4px 7px;
+  border-bottom: 1px solid #808080;
+}
+.im-format span {
+  background: #fff;
+  border: 1px solid #888;
+  padding: 2px 25px 2px 5px;
+}
+.im-compose textarea {
+  height: 65px;
+  width: 100%;
+  font: 13px/1.4 Arial;
+}
+.im-send-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 0;
+}
+.im-send-row > span {
+  font-size: 11px;
+  color: #666;
+}
+.im-send-row button {
+  width: 70px;
+}
+.instant-message .statusbar {
+  font-size: 11px;
+}
+.room-heading {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 8px;
+  background: #d8ddd3;
+  border-bottom: 1px solid #808080;
+  flex-wrap: wrap;
+}
+.room-heading img {
+  width: 28px;
+  height: 28px;
+}
+.room-heading > div {
+  font-weight: bold;
+  font-size: 14px;
+}
+.room-heading small {
+  font-size: 11px;
+  flex-basis: 100%;
+  padding-left: 37px;
+  color: #444;
+}
+.room-main {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  gap: 5px;
+}
+.room-log {
+  background: #fff;
+  color: #111;
+  line-height: 1.45;
+  font-family: Arial, sans-serif;
+  padding: 9px !important;
+}
+.room-log b {
+  color: #005285;
+}
+.room-log b.self {
+  color: #a00000;
+}
+.room-log .room-system {
+  font-size: 12px;
+  color: #666;
+  font-style: italic;
+}
+.room-log .message-time {
+  font-size: 11px;
+  color: #777;
+}
+.room-compose {
+  display: flex;
+  gap: 5px;
+  flex-shrink: 0;
+  height: 29px;
+}
+.room-compose input {
+  flex: 1;
+  min-width: 0;
+}
+.room-compose button {
+  width: 65px;
+}
+.chat-users {
+  width: 135px;
+  font-size: 11px;
+  line-height: 1.9;
+  overflow-x: auto;
+}
+.chat-users > b {
+  display: block;
+  margin-bottom: 9px;
+}
+.chat-users small {
+  color: #777;
+}
+.ie-classic .toolbar {
+  padding: 4px;
+  gap: 2px;
+  height: 48px;
+}
+.ie-classic .toolbar button {
+  height: 36px;
+  padding: 5px 10px;
+}
+.ie-classic .toolbar button:disabled {
+  opacity: 0.7;
+}
+.ie-classic .addressbar {
+  padding: 3px 4px;
+}
+.ie-classic .addressbar input {
+  height: 23px;
+}
+.ie-links {
+  display: flex;
+  gap: 3px;
+  padding: 2px 4px 5px;
+  border-bottom: 1px solid #808080;
+  flex-shrink: 0;
+}
+.ie-links button {
+  box-shadow: none;
+  background: transparent;
+  padding: 3px 8px;
+  font-size: 11px;
+}
+.ie-links button:hover {
+  text-decoration: underline;
+}
+.ie-wrap {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  background: #fff;
+  border: 2px inset #eee;
+}
+.ie-wrap .browser-page {
+  flex: 1;
+  min-width: 0;
+  overflow: auto;
+}
+.ie-favorites {
+  width: 160px;
+  flex-shrink: 0;
+  overflow: auto;
+  background: #fff;
+  padding: 10px 5px;
+  border-right: 3px ridge #c0c0c0;
+}
+.ie-favorites > b {
+  display: block;
+  padding: 3px 5px 10px;
+}
+.ie-favorites button {
+  display: block;
+  text-align: left;
+  width: 100%;
+  background: white;
+  box-shadow: none;
+  padding: 7px 5px;
+  color: #000080;
+}
+.ie-favorites button:hover {
+  background: #ddd;
+}
+.browser-brand {
+  font-size: 21px;
+  padding: 12px 15px;
+}
+.myspace-nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  background: #6699cc;
+  padding: 5px;
+}
+.myspace-nav button {
+  box-shadow: none;
+  background: transparent;
+  color: white;
+  font-size: 11px;
+  padding: 3px;
+}
+.myspace-body {
+  background-color: #140e19;
+  gap: 16px;
+  padding: 16px;
+}
+.myspace-module {
+  border-color: #c978a6;
+}
+.myspace-module-header {
+  background: #d994ba;
+  padding: 4px 7px;
+  font-size: 12px;
+}
+.myspace-profile-header h2 {
+  font:
+    24px Georgia,
+    serif;
+  color: #edacd0;
+  margin: 0 0 10px;
+}
+.myspace-profile-header img {
+  width: 155px;
+  height: 170px;
+  border-color: #bf81a4;
+  object-fit: cover;
+}
+.myspace-profile-details {
+  font-size: 11px;
+  line-height: 1.5;
+}
+.myspace-contact {
+  border: 1px solid #c978a6;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #efb8d5;
+  font-size: 12px;
+}
+.myspace-contact button {
+  box-shadow: none;
+  background: transparent;
+  color: #fff;
+  text-decoration: underline;
+  text-align: left;
+  font-size: 11px;
+  padding: 4px 0;
+}
+.myspace-comments-list p {
+  font:
+    12px/1.5 Verdana,
+    sans-serif;
+}
+.myspace-top5 {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.myspace-friend img {
+  width: 72px;
+  height: 72px;
+}
+.myspace-friend {
+  font:
+    10px/1.3 Verdana,
+    sans-serif;
+}
+.myspace-about-me {
+  font-size: 12px;
+}
+.myspace-about-me img {
+  display: block;
+  margin: 7px auto;
+}
+.livejournal {
+  background: #e3e7eb;
+  color: #262d37;
+  min-height: 100%;
+  font:
+    12px/1.6 Verdana,
+    Arial,
+    sans-serif;
+}
+.lj-mast {
+  background: #263c62;
+  color: #fff;
+  font:
+    italic bold 23px Georgia,
+    serif;
+  padding: 10px 17px;
+  border-bottom: 2px solid #93a7be;
+}
+.lj-nav {
+  background: #ced8e1;
+  border-bottom: 1px solid #acb8c5;
+  display: flex;
+  gap: 12px;
+  padding: 3px 12px;
+}
+.lj-nav button {
+  background: transparent;
+  box-shadow: none;
+  color: #214d7c;
+  font:
+    11px Verdana,
+    sans-serif;
+  padding: 5px 3px;
+  text-decoration: underline;
+}
+.lj-layout {
+  display: flex;
+  gap: 17px;
+  padding: 20px 17px;
+}
+.lj-sidebar {
+  width: 115px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: #4c5c72;
+  font-size: 11px;
+}
+.lj-sidebar > img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  padding: 3px;
+  border: 1px solid #aeb8c5;
+  margin-bottom: 8px;
+  background: #fff;
+}
+.lj-sidebar p {
+  white-space: pre-line;
+  margin: 6px 0 12px;
+}
+.lj-sidebar hr {
+  width: 100%;
+  border: 0;
+  border-top: 1px solid #b5bfc9;
+}
+.lj-sidebar button {
+  background: transparent;
+  box-shadow: none;
+  text-decoration: underline;
+  color: #315984;
+  padding: 5px 0;
+  font: 10px Verdana;
+}
+.lj-main {
+  flex: 1;
+  min-width: 0;
+}
+.lj-main h1 {
+  font:
+    italic 23px/1.25 Georgia,
+    serif;
+  color: #334d6c;
+  margin: 0 0 6px;
+}
+.lj-subtitle {
+  font-size: 10px;
+  color: #718096;
+  margin: 0 0 20px;
+}
+.lj-entry {
+  background: #fff;
+  border: 1px solid #bbc6d1;
+  margin: 0 0 17px;
+  padding: 15px;
+  box-shadow: 2px 2px #d2d8df;
+}
+.lj-date {
+  font:
+    10px Verdana,
+    sans-serif;
+  color: #7c8590;
+  padding-bottom: 7px;
+  border-bottom: 1px dotted #b4bdc7;
+}
+.lj-entry h2 {
+  font:
+    bold 16px Georgia,
+    serif;
+  color: #345b7b;
+  margin: 11px 0;
+}
+.lj-entry p {
+  font:
+    12px/1.7 Verdana,
+    sans-serif;
+  margin: 10px 0;
+  user-select: text;
+}
+.lj-mood {
+  font:
+    10px/1.8 Verdana,
+    sans-serif;
+  color: #697686;
+}
+.lj-comment-link {
+  background: transparent;
+  color: #3b6488;
+  text-decoration: underline;
+  box-shadow: none;
+  font:
+    10px Verdana,
+    sans-serif;
+  padding: 9px 0 0;
+}
+.lj-photo {
+  width: 150px;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #b7c2d0;
+  padding: 4px;
+  margin: 5px 0 10px;
+}
+.lj-comments {
+  margin-bottom: 15px;
+}
+.lj-comment {
+  background: #f7f9fa;
+  border-left: 3px solid #b2c4d6;
+  margin: 7px 0;
+  padding: 8px 11px;
+  font:
+    11px/1.6 Verdana,
+    sans-serif;
+}
+.lj-comment b {
+  color: #3b628c;
+  font-size: 10px;
+}
+.lj-comment p {
+  margin: 4px 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  user-select: text;
+}
+.lj-comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding-bottom: 15px;
+  font-size: 11px;
+}
+.lj-comment-form textarea {
+  height: 90px;
+  font: 12px/1.5 Verdana;
+}
+.lj-comment-form button {
+  align-self: flex-start;
+  font: 11px Verdana;
+}
+.lj-save-note {
+  font-size: 10px;
+  color: #4c5c72;
+}
+.winamp-window {
+  background: #282836;
+  box-shadow:
+    inset 1px 1px #9898a9,
+    inset -1px -1px #05050d,
+    inset 2px 2px #535363;
+  min-width: 310px;
+}
+.winamp-window > .titlebar,
+.winamp-window.active > .titlebar {
+  height: 19px;
+  background: repeating-linear-gradient(
+    0deg,
+    #343447 0 2px,
+    #777887 2px 3px,
+    #343447 3px 4px
+  );
+  color: #d6d3b9;
+  padding-left: 5px;
+}
+.winamp-window .title-text {
+  font:
+    bold 11px/14px Arial,
+    sans-serif;
+  letter-spacing: 2px;
+  text-align: center;
+  background: #272735;
+  margin: 0 8px;
+}
+.winamp-window > .titlebar > img {
+  width: 12px;
+  height: 12px;
+}
+.winamp-window .window-controls button {
+  height: 13px;
+  width: 14px;
+  min-width: 14px;
+  background: #aaaab4;
+  font-size: 11px;
+}
+.winamp-window .menubar {
+  height: 23px;
+  color: #c4c4d3;
+}
+.winamp-window .menubar button {
+  font-size: 10px;
+  padding: 4px 7px;
+}
+.winamp-window .player {
+  padding: 5px 8px;
+  gap: 6px;
+}
+.winamp-window .player-display {
+  background: #060a08;
+  color: #3eff36;
+  padding: 9px;
+  min-height: 74px;
+  border: 1px solid #101018;
+  box-shadow:
+    inset 1px 1px #000,
+    inset -1px -1px #727283;
+  gap: 12px;
+}
+.winamp-window .player-digits {
+  font:
+    32px/1.3 "Courier New",
+    monospace;
+  letter-spacing: -2px;
+  color: #69fb54;
+}
+.winamp-window .player-track {
+  font:
+    12px/1.6 "Courier New",
+    monospace;
+}
+.winamp-window .player-meta {
+  font:
+    9px/1.8 Arial,
+    sans-serif;
+  color: #92998a;
+  letter-spacing: 1px;
+}
+.winamp-window .player-controls {
+  gap: 2px;
+  color: #c8c8d7;
+  font-size: 10px;
+}
+.winamp-window .player-controls button {
+  width: 29px;
+  height: 23px;
+  background: #9a9aad;
+  padding: 2px;
+  font-size: 13px;
+  color: #252535;
+  box-shadow:
+    inset 1px 1px #e7e7ed,
+    inset -1px -1px #101018;
+}
+.winamp-window input[type="range"] {
+  height: 14px;
+  accent-color: #b8b29b;
+  min-width: 0;
+}
+.winamp-window .player-controls input {
+  width: 62px;
+}
+.winamp-window .player-controls label {
+  margin-left: auto;
+}
+.winamp-window .player-note {
+  font:
+    10px/1.4 Arial,
+    sans-serif;
+  color: #b1b1c4;
+}
+.winamp-window .statusbar {
+  color: #babacb;
+  font-size: 10px;
+  height: 17px;
+}
+.winamp-window .statusbar span {
+  box-shadow:
+    inset 1px 1px #11111c,
+    inset -1px -1px #545465;
+  padding: 2px 4px;
+}
+.winamp-playlist-head {
+  display: flex;
+  align-items: center;
+  color: #cfcca9;
+  font: bold 10px Arial;
+  letter-spacing: 1px;
+  gap: 10px;
+}
+.winamp-playlist-head button {
+  margin-left: auto;
+  background: #444457;
+  color: #b7b7c6;
+  font: 9px Arial;
+  padding: 3px 6px;
+  box-shadow:
+    inset 1px 1px #747488,
+    inset -1px -1px #12121d;
+}
+.winamp-playlist-head button.pressed {
+  color: #69fb54;
+  box-shadow: inset 1px 1px #090911;
+}
+.winamp-playlist {
+  background: #080b08;
+  border: 1px solid #5a5a68;
+  flex: 1;
+  min-height: 40px;
+  overflow: auto;
+  padding: 3px;
+}
+.winamp-playlist button {
+  display: block;
+  width: 100%;
+  padding: 3px 4px;
+  box-shadow: none !important;
+  background: transparent;
+  color: #5cdc4b;
+  text-align: left;
+  font:
+    11px/1.3 "Courier New",
+    monospace;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.winamp-playlist button.selected {
+  background: #171a3b;
+  color: #fff;
+}
+.winamp-playlist button:hover {
+  background: #242638;
+}
+@media (max-width: 650px) {
+  .ie-classic .toolbar {
+    height: auto;
+    min-height: 40px;
+  }
+  .ie-classic .toolbar button {
+    height: 29px;
+    padding: 4px 6px;
+    font-size: 11px;
+  }
+  .ie-links {
+    flex-wrap: wrap;
+    gap: 0;
+  }
+  .ie-links button {
+    padding: 4px 5px;
+  }
+  .ie-favorites {
+    width: 105px;
+    font-size: 11px;
+  }
+  .lj-layout {
+    padding: 12px 9px;
+    gap: 10px;
+  }
+  .lj-sidebar {
+    width: 75px;
+    font-size: 10px;
+  }
+  .lj-sidebar > img {
+    width: 65px;
+    height: 65px;
+  }
+  .lj-sidebar > b {
+    font-size: 9px;
+    overflow-wrap: anywhere;
+    max-width: 75px;
+  }
+  .lj-main h1 {
+    font-size: 18px;
+  }
+  .lj-entry {
+    padding: 10px;
+  }
+  .lj-entry p {
+    font:
+      12px/1.6 Arial,
+      sans-serif;
+  }
+  .lj-entry h2 {
+    font-size: 15px;
+  }
+  .lj-mood,
+  .lj-date {
+    font-size: 9px;
+  }
+  .lj-nav {
+    gap: 7px;
+  }
+  .myspace-nav {
+    gap: 4px;
+  }
+  .myspace-top5 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .chat-users {
+    width: 105px;
+    font-size: 10px;
+    padding: 5px !important;
+  }
+  .room-heading {
+    padding: 5px;
+    font-size: 12px;
+  }
+  .room-heading small {
+    padding-left: 0;
+    line-height: 1.4;
+  }
+  .room-log {
+    font-size: 12px !important;
+  }
+  .dialup-content {
+    padding: 10px;
+    gap: 9px;
+  }
+  .dialup-field {
+    grid-template-columns: 85px 1fr;
+  }
+  .sound-option {
+    font-size: 10px;
+  }
+  .winamp-window .window-controls button {
+    height: 16px;
+    width: 20px;
+  }
+  .winamp-window .player {
+    padding: 5px;
+  }
+  .winamp-window .player-controls input {
+    width: 48px;
+  }
+  .instant-message .chat-log {
+    font-size: 12px;
+  }
+  .im-compose textarea {
+    height: 55px;
+  }
+}
